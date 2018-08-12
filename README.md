@@ -6,7 +6,10 @@ A python wrapper for the NeurboParser
     - Docker
 
 ## Usage 
-TBD
+    - Command Line
+        TBD
+    - Programatic
+        TBD
 
 ## Setup 
 TBD
@@ -19,3 +22,5 @@ TBD
 
 ### Evaluation
     TBD
+
+## Demo
