@@ -1,6 +1,7 @@
 """
 Written by Ari Bornstein 
-Wrapper for setting up NeurboParser env with python
+Wrapper for setting up NeurboParser env with python for training
+Run in the context of the contained Dockerfile or equivlent enviorment
 """
 
 import argparse
@@ -15,7 +16,6 @@ if __name__ == "__main__":
     parser.add_argument("--train_dir", help="Directory for SDP train data")
     parser.add_argument("--test_dir", help="Directory for SDP test data")
     parser.add_argument("--embedding", help="Glove file")
-
     args = parser.parse_args()
 
     # prepare sdp splits

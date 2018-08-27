@@ -1,13 +1,14 @@
 """
 Written by Ari Bornstein 
 Wrapper for evaluating NeurboParser models with python
+Run in the context of the contained Dockerfile 
 """
 import argparse
 import spacy
 import os
 import json
+from conllu import parse
 import subprocess
-
 
 nlp = spacy.load('en', vectors=False)
 
@@ -26,15 +27,15 @@ def parse_cmd(parser_file, pruner_model, data_file, model_file, prediction):
                     prediction
                 )
 
-
 def semantic_parse(text, parser_file, pruner_model, data_file, model_file, prediction):
     """
+    Parses semantic dependency graph from a string of sentences 
+    Requires a pruner and parser file
     """
     doc = nlp(text)
 
     f= open(data_file,"w+")
     for sent in doc.sents:
-        # f.write("#22100001\n")
         for i, word in enumerate(sent):
             f.write("%d\t%s\t%s\t%s\n"%(
                 i+1, # There's a word.i attr that's position in *doc*
@@ -46,15 +47,15 @@ def semantic_parse(text, parser_file, pruner_model, data_file, model_file, predi
     f.close()
 
     process = subprocess.Popen(parse_cmd(parser_file, pruner_model, data_file, model_file, prediction),
-    shell=True, stderr=subprocess.PIPE)
-
-    print parse_cmd(parser_file, pruner_model, data_file, model_file, prediction)
+                            shell=True, stderr=subprocess.PIPE)
     process.wait()
+
     # update this with direct pipe from output
     with open(prediction, 'r') as myfile:
-        data=myfile.read()
-
-    return data
+        data = myfile.read()
+    sentences = parse(data)
+    return json.dumps({"original text":text, 
+                       "parse" : [ob.__dict__ for ob in sentences]})
 
 if __name__ == "__main__":
     default_nerbo =  "/opt/dynet/NeurboParser/"

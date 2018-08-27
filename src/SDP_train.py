@@ -1,12 +1,12 @@
 """
 Written by Ari Bornstein 
 Wrapper for training NeurboParser models with python
+Run in the context of the contained Dockerfile or equivlent enviorment
 """
 
 import os
 import argparse
 import subprocess
-
 
 def train(parser_file, train_epochs, pruner_epochs, file_train, file_dev,
 		  file_pruner_model, use_pretrained_embedding, file_pretrained_embedding,

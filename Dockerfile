@@ -17,16 +17,17 @@ WORKDIR /opt/dynet
 RUN git clone https://github.com/Noahs-ARK/NeurboParser.git
 WORKDIR /opt/dynet/NeurboParser
 # Install dependencies
-RUN git submodule update --init
-RUN ./install_deps.sh
+RUN git submodule update --init && ./install_deps.sh
+
 # Make NeurboParser
 RUN mkdir -p NeurboParser/build   
 WORKDIR /opt/dynet/NeurboParser/NeurboParser/build
 RUN cmake ..; make -j4
 WORKDIR /opt/dynet/NeurboParser
 
-# install python and 
-RUN apt-get update
+# install zip python and 
+RUN apt-get update && RUN apt-get install zip -y
+
 RUN apt-get install software-properties-common -y
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update
@@ -34,5 +35,11 @@ RUN apt-get install python3.6 -y
 RUN apt-get install curl -y
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
+
+# Install spacy, flask, conllu
 RUN pip install -U spacy && python -m spacy download en
+RUN pip install flask conllu
+
+# Unzip sdp_models
+CMD  unzip /data/pretrained_models/sdp_models.zip && /bin/bash
 

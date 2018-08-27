@@ -1,29 +1,47 @@
 # pyNeurboParser
-A python wrapper for the NeurboParser
+A python wrapper for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) lib 
 
 ## Prerequites
-    - Manual Install
     - Docker
+
+## Setup
+        1. Clone the pyNeurboParser Repo
+        2. Run the pyNeurboParser container
+        ```
+        docker run -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
+        ```
 
 ## Usage 
     - Command Line
-        TBD
+
+        In the container run the following command to evaluate the model
+        ```
+        python /data/src/SDP_eval.py  --pruner "Path to pruner model" --model "Path to SDP model --pred Path to prediction output --text "Text to be parsed"
+        ```
+
     - Programatic
-        TBD
 
-## Setup 
-TBD
+        ```python
+            sys.path.append("/data/src/")
+            from SDP_eval import semantic_parse
 
-### Training
-    - Local
-        TBD
-    - Azure Batch AI
-        TBD
+            json_parse = semantic_parse(text, parser_path, pruner_path, data_file, model_path, prediction_path)
+        ```
 
-### Evaluation
-    TBD
+### Training    
+    1. Run setup (note you only have to do this once)
+    ```
+    python /data/src/SDP_setup.py --train_dir "Directory for SDP train data" --test_dir "Directory for SDP test data" --embedding "Glove file"
+    ```
+
+    2. Run train script 
+    ```
+    python /data/src/SDP_train.py --model "Path to write models" --pred "Path to write predictions" --log "Path to write logs"
+	--language "Parser Language" --form "Desired SDP formalism"
+    ```
 
 ## Demo
+An example usage of this wrapper in a flask application can be found in the demo app
 
 ## References
 	
