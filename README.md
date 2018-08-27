@@ -2,43 +2,47 @@
 A python wrapper for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) lib 
 
 ## Prerequites
-    - Docker
+
+- [Docker Client](https://www.docker.com/)
 
 ## Setup
-        1. Clone the pyNeurboParser Repo
-        2. Run the pyNeurboParser container
-        ```
-        docker run -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
-        ```
+
+1. Clone the pyNeurboParser Repo
+2. Run the pyNeurboParser container
+```
+	docker run -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
+```
 
 ## Usage 
-    - Command Line
+- Command Line
 
-        In the container run the following command to evaluate the model
-        ```
-        python /data/src/SDP_eval.py  --pruner "Path to pruner model" --model "Path to SDP model --pred Path to prediction output --text "Text to be parsed"
-        ```
+In the container run the following command to evaluate the model
 
-    - Programatic
+```
+python /data/src/SDP_eval.py  --pruner "Path to pruner model" --model "Path to SDP model --pred Path to prediction output --text "Text to be parsed"
+```
 
-        ```python
-            sys.path.append("/data/src/")
-            from SDP_eval import semantic_parse
+- Programatic
 
-            json_parse = semantic_parse(text, parser_path, pruner_path, data_file, model_path, prediction_path)
-        ```
+```python
+    sys.path.append("/data/src/")
+    from SDP_eval import semantic_parse
+
+    json_parse = semantic_parse(text, parser_path, pruner_path, data_file, model_path, prediction_path)
+```
 
 ### Training    
-    1. Run setup (note you only have to do this once)
-    ```
-    python /data/src/SDP_setup.py --train_dir "Directory for SDP train data" --test_dir "Directory for SDP test data" --embedding "Glove file"
-    ```
+1. Run setup (note you only have to do this once)
 
-    2. Run train script 
-    ```
-    python /data/src/SDP_train.py --model "Path to write models" --pred "Path to write predictions" --log "Path to write logs"
-	--language "Parser Language" --form "Desired SDP formalism"
-    ```
+```
+python /data/src/SDP_setup.py --train_dir "Directory for SDP train data" --test_dir "Directory for SDP test data" --embedding "Glove file"
+```
+
+2. Run train script 
+```
+python /data/src/SDP_train.py --model "Path to write models" --pred "Path to write predictions" --log "Path to write logs"
+--language "Parser Language" --form "Desired SDP formalism"
+```
 
 ## Demo
 An example usage of this wrapper in a flask application can be found in the demo app
