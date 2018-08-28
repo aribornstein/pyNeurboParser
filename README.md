@@ -1,5 +1,5 @@
 # pyNeurboParser
-This software provides a python wrapper and docker enviorment for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) the semantic dependency parser library. Semantic Dependency Parsing (SDP) is the task of recovering sentence-internal predicate–argument relationships for content words in text. 
+Semantic Dependency Parsing (SDP) is the task of recovering sentence-internal predicate–argument relationships for content words in text. This software provides a python wrapper and docker enviorment for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) semantic dependency parser library, to enable easier usage. 
 
 ## Prerequites
 
