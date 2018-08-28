@@ -19,7 +19,7 @@ Semantic Dependency Parsing (SDP) is the task of recovering sentence-internal pr
 In the container run the following command to evaluate the model
 
 ```
-python /data/src/SDP_eval.py  --pruner "Path to pruner model" --model "Path to SDP model --pred Path to prediction output --text "Text to be parsed"
+python /data/src/SDP_eval.py  --pruner "Path to pruner model" --model "Path to SDP model" --pred "Path to prediction output" --text "Text to be parsed"
 ```
 
 - Programatic
