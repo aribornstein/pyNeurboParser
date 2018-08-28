@@ -36,7 +36,6 @@ RUN apt-get update && apt-get install zip software-properties-common — no-in
         apt-get remove curl &&\
         apt-get clean
 
-
 # Install spacy, flask, conllu
 RUN pip install -U spacy &&\
         python -m spacy download en &&\
