@@ -4,7 +4,7 @@
 1. Clone the pyNeurboParser Repo
 2. Run the pyNeurboParser container
 ```
-    docker run -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
+    docker run --rm -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
 ```
 3. In the container run the following command to start the service
 ```

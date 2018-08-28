@@ -1,5 +1,5 @@
 # pyNeurboParser
-A python wrapper for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) lib 
+This software provides a python wrapper and docker enviorment for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParser) the semantic dependency parser library. Semantic Dependency Parsing (SDP) is the task of recovering sentence-internal predicate–argument relationships for content words in text. 
 
 ## Prerequites
 
@@ -10,7 +10,7 @@ A python wrapper for the [NeurboParser](https://github.com/Noahs-ARK/NeurboParse
 1. Clone the pyNeurboParser Repo
 2. Run the pyNeurboParser container
 ```
-	docker run -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
+	docker run --rm -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
 ```
 
 ## Usage 
