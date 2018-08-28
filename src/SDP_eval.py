@@ -62,6 +62,7 @@ def semantic_parse(text, parser_file, pruner_model,
                        "parse": [ob.__dict__ for ob in sentences]})
 
 if __name__ == "__main__":
+
     default_neurbo = "/opt/dynet/NeurboParser/"
     parser = argparse.ArgumentParser()
     parser.add_argument("--neurbo_path", default=default_neurbo,
