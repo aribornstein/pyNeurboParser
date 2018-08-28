@@ -10,6 +10,7 @@ import os
 default_neurbo = "/opt/dynet/NeurboParser/"
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--neurbo_path", default=default_neurbo,
                         help="Path of cloned Neurbo Repo")
