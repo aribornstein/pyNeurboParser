@@ -8,7 +8,8 @@ Semantic Dependency Parsing (SDP) is the task of recovering sentence-internal pr
 ## Setup
 
 1. Clone the pyNeurboParser Repo
-2. Run the pyNeurboParser container
+2. Download sdp_models.zip file from releases into the pretrained_models folder. 
+3. Run the pyNeurboParser container
 ```
 	docker run --rm -it -v path_to_repo:/data/ -p 5000:5000 abornst/py-neurbo-parser
 ```
